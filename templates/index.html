@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Credit Card Analysis</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Predict if the customer is good or bad</h1>
+
+    <div class="form">
+        <form action="/predict" method="POST">
+            Enter Account Balance <input type="number" name="balance" id="balance" placeholder="Balance" step="any" required><br>
+            Enter Customer Age<input type="number" name="age" id="age" placeholder="age" step="any" min="1" max="120" required><br>
+            Enter District Id <input type="number" name="district_id" id="district_id" placeholder="district_id" step="any" min="1" max="77" required><br>
+            Select Gender <select name="client_sex" id="client_sex" ><br>
+                <option value="M">Male</option><br>
+                <option value="F">Female</option><br>
+            </select><br>
+            Select Account Frequency <select name="frequency" id="frequency"><br>
+                <option value="MI">POPLATEK MESICNE</option><br>
+                <option value="WI">POPLATEK TYDNE</option><br>
+                <option value="TI">POPLATEK PO OBRATU</option><br>
+            </select><br>
+            Select Credit Card Type<select name="ctype" id="ctype"><br>
+                <option value="J">JUNIOR</option><br>
+                <option value="C">CLASSIC</option><br>
+                <option value="G">GOLD</option><br>
+            </select><br>
+            <input type="submit" value="Predict" >
+        </form>
+    </div>
+</div>
+{% endblock %}
